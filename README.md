@@ -1,1 +1,2 @@
-# 2022-08-otus-spring-shafikova
+Шафикова Динара
+dinashaf93@gmail.com
