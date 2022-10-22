@@ -18,6 +18,7 @@ import java.util.List;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
+
 @ExtendWith(MockitoExtension.class)
 public class TaskServiceImplTest {
 
@@ -41,4 +42,5 @@ public class TaskServiceImplTest {
         assertThat(taskService.getAllTasks().size()).isEqualTo(3);
         verify(dao).getAllTasks();
     }
+
 }
