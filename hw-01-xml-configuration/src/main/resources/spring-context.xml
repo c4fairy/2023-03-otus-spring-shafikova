@@ -5,15 +5,21 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
 
     <bean id="taskDao" class="ru.otus.dao.TaskDaoImpl">
-        <constructor-arg index="0" name="fileName" value="questionier.csv"/>
-        <constructor-arg index="1" name="delimiter" value=";"/>
+        <constructor-arg index="0" ref="csvReader"/>
+        <constructor-arg index="1" ref="taskUtil"/>
+        <constructor-arg index="2" name="fileName" value="questionier.csv"/>
+        <constructor-arg index="3" name="delimiter" value=";"/>
     </bean>
 
     <bean id="taskServiceImp" name="taskService" class="ru.otus.service.TaskServiceImpl">
         <constructor-arg ref="taskDao"/>
+        <constructor-arg ref="printService"/>
     </bean>
 
-    <bean id="printService" class="ru.otus.service.ExamPrinterImpl">
-    </bean>
+    <bean id="printService" class="ru.otus.service.ExamPrinterImpl"/>
+
+    <bean id="csvReader" class="ru.otus.util.CsvReader"/>
+
+    <bean id="taskUtil" class="ru.otus.util.TaskUtil"/>
 
 </beans>

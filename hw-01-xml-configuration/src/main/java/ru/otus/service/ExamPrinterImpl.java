@@ -9,6 +9,7 @@ public class ExamPrinterImpl implements ExamPrinter {
 
     private static final PrintStream printStream = new PrintStream(System.out);
 
+    @Override
     public void printAll(List<Task> tasks) {
         tasks.forEach(printStream::println);
     }

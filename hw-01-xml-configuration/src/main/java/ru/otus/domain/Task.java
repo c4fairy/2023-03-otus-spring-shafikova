@@ -8,7 +8,9 @@ import java.util.List;
 public class Task {
 
     private String question;
+
     private String answer;
+
     private List<String> options;
 
     public Task(String question, String answer, List<String> options) {

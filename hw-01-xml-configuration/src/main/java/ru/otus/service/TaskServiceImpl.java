@@ -10,12 +10,17 @@ import java.util.List;
 public class TaskServiceImpl implements TaskService {
     private final TaskDao dao;
 
-    public TaskServiceImpl(TaskDao dao) {
+    private final ExamPrinter printer;
+
+    public TaskServiceImpl(TaskDao dao, ExamPrinter printer) {
         this.dao = dao;
+        this.printer = printer;
     }
 
     @Override
     public List<Task> getAllTasks() throws IOException, URISyntaxException {
-        return dao.getAllTasks();
+        var tasks = dao.getAllTasks();
+        printer.printAll(tasks);
+        return tasks;
     }
 }

@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.otus.dao.TaskDao;
 import ru.otus.domain.Task;
+import ru.otus.service.ExamPrinter;
 import ru.otus.service.TaskServiceImpl;
 
 import java.io.IOException;
@@ -24,11 +25,14 @@ public class TaskServiceImplTest {
     @Mock
     private TaskDao dao;
 
+    @Mock
+    private ExamPrinter printer;
+
     private TaskServiceImpl taskService;
 
     @BeforeEach
     void setUp() {
-        taskService = new TaskServiceImpl(dao);
+        taskService = new TaskServiceImpl(dao, printer);
     }
 
     @Test
