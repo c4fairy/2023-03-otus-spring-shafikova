@@ -16,7 +16,7 @@ import java.util.Locale;
 public class ApplicationConfig {
     private String fileName;
 
-    private Locale locale;
+    private String locale;
 
     private Integer passScore;
 

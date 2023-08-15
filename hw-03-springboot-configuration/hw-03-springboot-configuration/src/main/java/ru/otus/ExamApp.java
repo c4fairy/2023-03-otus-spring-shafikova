@@ -5,16 +5,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import ru.otus.config.ApplicationConfig;
-import ru.otus.util.printer.ExamPrinter;
+import ru.otus.service.ExamService;
 
 
 @SpringBootApplication
 @EnableConfigurationProperties(ApplicationConfig.class)
 public class ExamApp {
 
-	public static void main(String[] args) {
-		ApplicationContext context = SpringApplication.run(ExamApp.class, args);
-		final ExamPrinter examPrinter = context.getBean(ExamPrinter.class);
-		examPrinter.print();
-	}
+    public static void main(String[] args) {
+        ApplicationContext context = SpringApplication.run(ExamApp.class, args);
+        ExamService exam = context.getBean(ExamService.class);
+        exam.startExam();
+    }
 }
