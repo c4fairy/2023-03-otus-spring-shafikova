@@ -1,0 +1,4 @@
+application:
+  locale: ru
+  fileName: questions.csv
+  passScore: 4
