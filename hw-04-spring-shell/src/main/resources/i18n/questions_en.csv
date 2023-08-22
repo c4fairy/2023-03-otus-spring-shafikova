@@ -1,0 +1,5 @@
+1) What of the following is the default value of a local variable?,1. null,2. 0,3. Depends upon the type of variable,4. Not assigned*
+2) What is the size of char variable?,1. 8 bit,2. 16 bit*,3. 32 bit,4. 64 bit
+3) What is the default value of double variable?,1. 0.0d*,2. 0.0f,3. 0,4. not defined
+4) What is the default value of Object variable?,1. undefined,2. 0,3. null*,4. not defined
+5) What is an Interface?,1. An interface is a collection of abstract methods,2. Interface is an abstract class,3. Interface is an concrete class*,4. None of the above
