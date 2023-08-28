@@ -1,13 +1,12 @@
-package ru.otus.dao;
+package ru.otus.dao.impl;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.TypedQuery;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import ru.otus.dao.CommentDao;
 import ru.otus.model.Comment;
 
-import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -37,12 +36,4 @@ public class CommentDaoImpl implements CommentDao {
         entityManager.remove(comment);
     }
 
-    @Override
-    public List<Comment> findAllCommentsByAuthorId(long id) {
-        TypedQuery<Comment> query = entityManager.createQuery("select comment " +
-                "from Comment comment " +
-                "left join comment.book book where book.author.id=:id", Comment.class);
-        query.setParameter("id", id);
-        return query.getResultList();
-    }
 }

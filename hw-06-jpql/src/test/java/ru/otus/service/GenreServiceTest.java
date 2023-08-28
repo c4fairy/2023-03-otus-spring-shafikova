@@ -8,7 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.otus.dao.GenreDaoImpl;
+import ru.otus.dao.impl.GenreDaoImpl;
 import ru.otus.model.Genre;
 import ru.otus.service.impl.GenreServiceImpl;
 

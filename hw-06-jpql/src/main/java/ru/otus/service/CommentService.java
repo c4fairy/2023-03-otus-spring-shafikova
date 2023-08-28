@@ -15,6 +15,4 @@ public interface CommentService {
     void deleteById(long id);
 
     void addNewComment(int bookId, String commentText);
-
-    List<Comment> findAllCommentsByAuthorId(long id);
 }

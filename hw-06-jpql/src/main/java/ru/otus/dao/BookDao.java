@@ -16,13 +16,11 @@ public interface BookDao {
 
     List<Book> findByName(String name);
 
-    void deleteById(Book book);
+    void deleteBook(Book book);
 
     long getCount();
 
     List<Book> findAllBooksByAuthorId(long id);
-
-    List<Book> findAllWithComments();
 
     List<ImmutablePair<Book, Long>> findAllBooksWithCommentsCount();
 }

@@ -22,19 +22,16 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public Author findById(long id) {
         return authorDao.findById(id).get();
     }
 
     @Override
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public List<Author> findAll() {
         return authorDao.findAll();
     }
 
     @Override
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public Author findByNameAndSurname(String name, String surname) {
         return authorDao.findByNameAndSurname(name, surname);
     }

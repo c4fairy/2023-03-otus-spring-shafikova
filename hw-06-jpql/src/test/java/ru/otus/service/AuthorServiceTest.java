@@ -8,7 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.otus.dao.AuthorDaoImpl;
+import ru.otus.dao.impl.AuthorDaoImpl;
 import ru.otus.model.Author;
 import ru.otus.service.impl.AuthorServiceImpl;
 

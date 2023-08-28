@@ -3,7 +3,6 @@ package ru.otus.service.impl;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ru.otus.dao.BookDao;
 import ru.otus.model.Author;
@@ -34,20 +33,17 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public Book findById(long id) {
         Optional<Book> book = bookDao.findById(id);
         return book.orElse(null);
     }
 
     @Override
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public List<Book> findAll() {
         return bookDao.findAll();
     }
 
     @Override
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public List<Book> findByName(String name) {
         return bookDao.findByName(name);
     }
@@ -69,7 +65,7 @@ public class BookServiceImpl implements BookService {
         Optional<Book> optionalBook = bookDao.findById(id);
         if (optionalBook.isPresent()) {
             Book book = optionalBook.get();
-            bookDao.deleteById(book);
+            bookDao.deleteBook(book);
         }
     }
 
@@ -96,25 +92,16 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public long getCount() {
         return bookDao.getCount();
     }
 
     @Override
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public List<Book> findAllBooksByAuthorId(long id) {
         return bookDao.findAllBooksByAuthorId(id);
     }
 
     @Override
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public List<Book> findAllWithComments() {
-        return bookDao.findAllWithComments();
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public Map<Book, Long> findAllBooksWithCommentsCount() {
         List<ImmutablePair<Book, Long>> pairList = bookDao.findAllBooksWithCommentsCount();
         Map<Book, Long> bookMap = new HashMap<>();

@@ -131,19 +131,6 @@ public class ShellController {
         ioService.write("В базе нет книг указанного автора");
     }
 
-    @ShellMethod(key = {"commentListByAuthorId", "clbai"}, value = "show all comments to all books by author id")
-    public void showAllCommentsByAuthorId() {
-        ioService.write("Введите Id автора для отображения всех комментариев к его книгам");
-        long authorId = ioService.readInt();
-        List<Comment> comments = commentService.findAllCommentsByAuthorId(authorId);
-        if (!comments.isEmpty()) {
-            Author author = comments.get(0).getBook().getAuthor();
-            ioService.write("Комментарии к книгам автора: " + author.getName() + " " + author.getSurname());
-            comments.forEach(comment -> ioService.write("Книга: " + comment.getBook().getTitle() + ". Комментарий: " + comment.getText()));
-        }
-        ioService.write("У данного автора нет комментариев к книгам");
-    }
-
     @ShellMethod(key = {"bookListWithCommentsCountGroupBy", "blwc"}, value = "show all books and comments counts")
     public void showAllBooksWithComments() {
         Map<Book, Long> books = bookService.findAllBooksWithCommentsCount();

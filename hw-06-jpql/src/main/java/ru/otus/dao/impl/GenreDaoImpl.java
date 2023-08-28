@@ -1,4 +1,4 @@
-package ru.otus.dao;
+package ru.otus.dao.impl;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
@@ -6,6 +6,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import ru.otus.dao.GenreDao;
 import ru.otus.model.Genre;
 
 import java.util.Optional;

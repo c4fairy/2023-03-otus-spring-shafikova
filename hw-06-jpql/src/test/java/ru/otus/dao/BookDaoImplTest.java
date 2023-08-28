@@ -9,6 +9,8 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.context.annotation.Import;
+import ru.otus.dao.impl.BookDaoImpl;
+import ru.otus.dao.impl.CommentDaoImpl;
 import ru.otus.model.Author;
 import ru.otus.model.Book;
 import ru.otus.model.Genre;
@@ -117,7 +119,7 @@ class BookDaoImplTest {
     void shouldDeleteBookNameById() {
         em.clear();
         Book book = bookDao.findById(FIRST_BOOK_ID).get();
-        bookDao.deleteById(book);
+        bookDao.deleteBook(book);
         val deletedBook = em.find(Book.class, FIRST_BOOK_ID);
         assertThat(deletedBook).isNull();
     }

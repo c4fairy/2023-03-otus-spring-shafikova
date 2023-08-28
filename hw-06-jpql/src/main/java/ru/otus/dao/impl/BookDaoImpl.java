@@ -1,4 +1,4 @@
-package ru.otus.dao;
+package ru.otus.dao.impl;
 
 import jakarta.persistence.EntityGraph;
 import jakarta.persistence.EntityManager;
@@ -8,6 +8,7 @@ import jakarta.persistence.TypedQuery;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.springframework.stereotype.Component;
+import ru.otus.dao.BookDao;
 import ru.otus.model.Book;
 
 import java.util.List;
@@ -51,7 +52,7 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
-    public void deleteById(Book book) {
+    public void deleteBook(Book book) {
         entityManager.remove(book);
     }
 
@@ -62,16 +63,9 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public List<Book> findAllBooksByAuthorId(long id) {
-        EntityGraph<?> entityGraph = entityManager.getEntityGraph("author_genre_entity_graph");
         TypedQuery<Book> query = entityManager.createQuery("select book from Book book where book.author.id=:id", Book.class);
         query.setParameter("id", id);
-        query.setHint("javax.persistence.fetchgraph", entityGraph);
         return query.getResultList();
-    }
-
-    @Override
-    public List<Book> findAllWithComments() {
-        return null;
     }
 
     @Override
