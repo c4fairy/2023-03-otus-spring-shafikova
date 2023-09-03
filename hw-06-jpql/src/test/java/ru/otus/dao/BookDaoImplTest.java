@@ -30,8 +30,9 @@ class BookDaoImplTest {
     private static final int EXPECTED_BOOKS_COUNT = 3;
 
     private static final String NEW_BOOK_TITLE = "Идиот";
-    private static final long NEW_BOOK_ID = 4;
+
     private static final long FIRST_BOOK_ID = 1;
+
     private static final String FIRST_BOOK_NAME = "Преступление и наказание";
 
     private final TestEntityManager em;
@@ -44,7 +45,8 @@ class BookDaoImplTest {
 
     @Test
     void shouldInsertBook() {
-        Book book = Book.builder().id(NEW_BOOK_ID)
+        Book book = Book.builder()
+                .id(1L)
                 .title(NEW_BOOK_TITLE)
                 .author(Author.builder().id(1L)
                         .name("Федор")
@@ -53,18 +55,20 @@ class BookDaoImplTest {
                 .genre(new Genre(1L, "Роман"))
                 .build();
         bookDao.save(book);
-        Optional<Book> actualBook = bookDao.findById(NEW_BOOK_ID);
+        Optional<Book> actualBook = bookDao.findById(1L);
         Assertions.assertThat(actualBook.orElse(null)).isEqualTo(book);
     }
 
     @Test
     void shouldSaveBook() {
-        val author = Author.builder().id(1L)
+        val author = Author.builder()
+                .id(1L)
                 .name("Федор")
                 .surname("Достоевский")
                 .build();
         val genre = new Genre(1L, "Роман");
         var book = Book.builder()
+                .id(1L)
                 .title(NEW_BOOK_TITLE)
                 .genre(genre)
                 .author(author)

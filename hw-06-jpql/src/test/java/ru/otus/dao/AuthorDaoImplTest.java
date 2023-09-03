@@ -20,6 +20,7 @@ class AuthorDaoImplTest {
     @Test
     void shouldInsertAuthor() {
         Author author = Author.builder()
+                .id(1L)
                 .name("name")
                 .surname("surname")
                 .build();
