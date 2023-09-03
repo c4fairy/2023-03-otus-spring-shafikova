@@ -1,11 +1,9 @@
 package ru.otus.dao.impl;
 
-import jakarta.persistence.EntityGraph;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.otus.dao.AuthorDao;
@@ -20,7 +18,7 @@ public class AuthorDaoImpl implements AuthorDao {
     @PersistenceContext
     private final EntityManager entityManager;
 
-    @Transactional
+
     @Override
     public Author save(Author author) {
         if (author.getId() == null) {

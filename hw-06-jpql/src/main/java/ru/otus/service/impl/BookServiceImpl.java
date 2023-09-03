@@ -55,7 +55,6 @@ public class BookServiceImpl implements BookService {
         if (optionalBook.isPresent()) {
             Book book = optionalBook.get();
             book.setTitle(name);
-            bookDao.save(book);
         }
     }
 
