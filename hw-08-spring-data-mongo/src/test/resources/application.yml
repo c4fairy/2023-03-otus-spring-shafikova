@@ -1,0 +1,21 @@
+spring:
+  data:
+    mongodb:
+      port: 0
+      database: test
+  mongodb:
+    embedded:
+      version: 4.4.13
+mongock:
+  mongo-db:
+    write-concern:
+      w: majority
+      w-timeout-ms: 300000
+      journal: false
+    read-concern: majority
+    read-preference: primary
+  change-logs-scan-package: ru.otus.education.bookrepositorymongo.mongorepository.changelogs
+  runner-type: InitializingBean
+logging:
+  level:
+    root: ERROR
