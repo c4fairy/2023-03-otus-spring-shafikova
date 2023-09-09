@@ -5,11 +5,8 @@ import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.otus.dao.CommentDao;
-import ru.otus.model.Book;
 import ru.otus.model.Comment;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -38,17 +35,4 @@ public class CommentDaoImpl implements CommentDao {
     public void deleteById(Comment comment) {
         entityManager.remove(comment);
     }
-
-    @Override
-    public List<Comment> findByBookId(Long bookId) {
-        var book = entityManager.find(Book.class, bookId);
-        if (book != null) {
-            return entityManager.createQuery("select comment from Comment comment where comment.book.id = :bookId",
-                            Comment.class)
-                    .setParameter("bookId", bookId)
-                    .getResultList();
-        }
-        return Collections.emptyList();
-    }
-
 }

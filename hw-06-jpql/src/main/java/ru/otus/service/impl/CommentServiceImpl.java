@@ -28,7 +28,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public List<Comment> findByBookId(Long bookId) {
-            return commentDao.findByBookId(bookId);
+            return bookService.findById(bookId).getComments();
     }
 
     @Override
