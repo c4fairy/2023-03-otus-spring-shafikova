@@ -1,4 +1,4 @@
-package ru.otus.homework;
+package ru.otus.homework.repository;
 
 import lombok.val;
 import org.junit.jupiter.api.Test;
