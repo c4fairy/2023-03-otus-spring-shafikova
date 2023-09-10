@@ -1,4 +1,4 @@
-package ru.otus;
+package ru.otus.controller;
 
 
 import org.junit.jupiter.api.Test;
