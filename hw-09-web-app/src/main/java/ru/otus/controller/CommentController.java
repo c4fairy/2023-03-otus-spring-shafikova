@@ -34,7 +34,7 @@ public class CommentController {
     }
 
     @PostMapping("/create/comment")
-    public String addBook(@ModelAttribute Comment comment) {
+    public String addComment(@ModelAttribute Comment comment) {
         commentService.addOrSaveComment(comment);
         return "redirect:/view/" + comment.getBook().getId();
     }
