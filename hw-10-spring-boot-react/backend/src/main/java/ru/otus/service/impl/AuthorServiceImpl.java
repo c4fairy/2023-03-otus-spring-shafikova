@@ -13,6 +13,6 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Author findByName(String authorName) {
-        return authorRepository.findByName(authorName).orElse(null);
+        return authorRepository.findByName(authorName).orElseThrow();
     }
 }

@@ -17,6 +17,7 @@ import ru.otus.dto.BookCommentsDto;
 import ru.otus.service.BookService;
 import ru.otus.service.CommentService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin
@@ -37,7 +38,7 @@ public class BookController {
         List<Book> books = bookService.findAll();
         return books != null && !books.isEmpty()
                 ? new ResponseEntity<>(books, HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                : new ResponseEntity<>(new ArrayList<>(), HttpStatus.OK);
     }
 
     @PostMapping("/books")

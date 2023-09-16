@@ -1,5 +1,6 @@
 package ru.otus.service.impl;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,16 +34,15 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book findById(long id) {
-        return bookRepository.findById(id).orElse(null);
+        return bookRepository.findById(id).orElseThrow();
     }
 
     @Override
     @Transactional
     public boolean update(long id, Book book) {
-        if (bookRepository.findById(id).orElse(null) != null) {
-            addOrUpdateBook(book);
-            return true;
-        } else return false;
+        bookRepository.findById(id).orElseThrow();
+        addOrUpdateBook(book);
+        return true;
     }
 
     @Override
