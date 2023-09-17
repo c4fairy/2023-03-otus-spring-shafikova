@@ -27,7 +27,7 @@ public class Comment {
     @Column(name = "text")
     private String text;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(targetEntity = Book.class, cascade = {CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "book_id")
     private Book book;
 

@@ -2,11 +2,13 @@ package ru.otus.dao.impl;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.otus.dao.CommentDao;
 import ru.otus.model.Comment;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -24,6 +26,14 @@ public class CommentDaoImpl implements CommentDao {
         } else {
             return entityManager.merge(comment);
         }
+    }
+
+    @Override
+    public List<Comment> findByBookId(long bookId) {
+        TypedQuery<Comment> query = entityManager.createQuery("select comment from Comment comment join Book book" +
+                " on comment.book.id = book.id  where book.id=:bookId ", Comment.class);
+        query.setParameter("bookId", bookId);
+        return query.getResultList();
     }
 
     @Override

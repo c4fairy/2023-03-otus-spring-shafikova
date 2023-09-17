@@ -127,8 +127,9 @@ public class ShellController {
             Author author = books.get(0).getAuthor();
             ioService.write("Книги автора: " + author.getName() + " " + author.getSurname());
             books.forEach(book -> ioService.write(book.getTitle()));
+        } else {
+            ioService.write("В базе нет книг указанного автора");
         }
-        ioService.write("В базе нет книг указанного автора");
     }
 
     @ShellMethod(key = {"bookListWithCommentsCountGroupBy", "blwc"}, value = "show all books and comments counts")

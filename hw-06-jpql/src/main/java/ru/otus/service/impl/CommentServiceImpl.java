@@ -3,7 +3,6 @@ package ru.otus.service.impl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.otus.dao.AuthorDao;
 import ru.otus.dao.CommentDao;
 import ru.otus.model.Book;
 import ru.otus.model.Comment;
@@ -28,7 +27,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public List<Comment> findByBookId(Long bookId) {
-            return bookService.findById(bookId).getComments();
+        return commentDao.findByBookId(bookId);
     }
 
     @Override
