@@ -1,0 +1,11 @@
+Spring:
+  data:
+    mongodb:
+      database: test2
+      host: localhost
+      port: 27017
+mongock:
+  change-logs-scan-package: ru.otus.changelogs
+  runner-type: InitializingBean
+server:
+  port: 8085
