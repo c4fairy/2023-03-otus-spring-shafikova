@@ -1,0 +1,31 @@
+Spring:
+  data:
+    mongodb:
+      database: test4
+      host: localhost
+      port: 27017
+  batch:
+    job:
+      enabled: false
+    jdbc:
+      initialize-schema: always
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+  h2:
+    console:
+      path: /h2-console
+      settings:
+        web-allow-others: true
+      enabled: true
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+mongock:
+  change-logs-scan-package: ru.otus.changelogs
+  runner-type: InitializingBean
+server:
+  port: 8085
