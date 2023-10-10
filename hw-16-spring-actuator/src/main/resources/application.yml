@@ -18,3 +18,23 @@ spring:
     show-sql: true
 server:
   port: 8085
+logging:
+  file:
+    name: logfile.txt
+  level:
+    org.springframework.web: DEBUG
+    guru.springframework.controllers: DEBUG
+    org.hibernate: DEBUG
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,logfile
+  endpoint:
+    health:
+      show-details: always
+  health:
+    defaults:
+      enabled: true
+    diskspace:
+      enabled: true
