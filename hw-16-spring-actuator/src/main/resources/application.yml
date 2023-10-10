@@ -1,0 +1,40 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:library_db
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:data.sql
+  h2:
+    console:
+      path: /h2-console
+      settings:
+        web-allow-others: true
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+server:
+  port: 8085
+logging:
+  file:
+    name: logfile.txt
+  level:
+    org.springframework.web: DEBUG
+    guru.springframework.controllers: DEBUG
+    org.hibernate: DEBUG
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,logfile
+  endpoint:
+    health:
+      show-details: always
+  health:
+    defaults:
+      enabled: true
+    diskspace:
+      enabled: true
